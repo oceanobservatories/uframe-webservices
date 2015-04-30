@@ -3,7 +3,7 @@
 Set of python scripts for:
 - Creating and executing uFrame data requests
 - Downloading uFrame ingested data sets as NetCDF files
-- 
+
 ##Contents
 - [Introduction](#introduction)
 - [Installation](#installation)
