@@ -195,8 +195,10 @@ def get_uframe_array_nc(array_id, nc_dest=None, exec_dpa=True, urlonly=False, de
             return
         
     # Make sure the array is in uFrame
-    sys.stdout.write('Fetching arrays ({:s})\n'.format(uframe_base))
-    sys.stdout.flush()
+    if not urlonly:
+	    sys.stdout.write('Fetching arrays ({:s})\n'.format(uframe_base))
+	    sys.stdout.flush()
+
     arrays = get_arrays(array_id=array_id, uframe_base=uframe_base)
     if not arrays:
         sys.stderr.write('Array {:s} does not exist in uFrame\n'.format(array_id))
@@ -204,12 +206,15 @@ def get_uframe_array_nc(array_id, nc_dest=None, exec_dpa=True, urlonly=False, de
         return
     
     array = arrays[0]    
-    sys.stdout.write('{:s}: Array exists...\n'.format(array))
-    sys.stdout.flush()
+    if not urlonly:
+	    sys.stdout.write('{:s}: Array exists...\n'.format(array))
+	    sys.stdout.flush()
     
     # Fetch the platforms on the array
-    sys.stdout.write('Fetching array platforms ({:s})\n'.format(uframe_base))
-    sys.stdout.flush()
+    if not urlonly:
+	    sys.stdout.write('Fetching array platforms ({:s})\n'.format(uframe_base))
+	    sys.stdout.flush()
+
     platforms = get_platforms(array, uframe_base=uframe_base)
     if not platforms:
         sys.stderr.write('{:s}: No platforms found for specified array\n'.format(array))
@@ -219,20 +224,23 @@ def get_uframe_array_nc(array_id, nc_dest=None, exec_dpa=True, urlonly=False, de
     for platform in platforms:
         
         p_name = '{:s}-{:s}'.format(array, platform, uframe_base=uframe_base)
-        sys.stdout.write('{:s}: Fetching platform data streams ({:s})\n'.format(p_name, uframe_base))
-        sys.stdout.flush()
+        if not urlonly:
+	        sys.stdout.write('{:s}: Fetching platform data streams ({:s})\n'.format(p_name, uframe_base))
+	        sys.stdout.flush()
         
         streams = get_platform_streams(array, platform, uframe_base=uframe_base)
         if not streams:
             sys.stderr.write('{:s}: No data streams found for this platform\n'.format(p_name))
             sys.stderr.flush()
             continue
-        
-        sys.stdout.write('{:s}: {:d} streams fetched\n'.format(p_name, len(streams)))
-        sys.stdout.flush()
-            
-        sys.stdout.write('Fetching platform streams ({:s})\n'.format(uframe_base))
-        sys.stdout.flush()
+       
+        if not urlonly:
+	        sys.stdout.write('{:s}: {:d} streams fetched\n'.format(p_name, len(streams)))
+	        sys.stdout.flush()
+           
+        if not urlonly:
+	        sys.stdout.write('Fetching platform streams ({:s})\n'.format(uframe_base))
+	        sys.stdout.flush()
         for stream in streams:
             # Fetch stream metadata
             
