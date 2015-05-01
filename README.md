@@ -16,7 +16,7 @@ uFrame provides web services that allow clients to create and execute requests f
 ###Installation
     > git clone https://github.com/ooi-integration/uframe-webservices.git
 
-There's also a [pip_requirements.txt](https://github.com/ooi-integration/uframe-webservices/blob/master/pip_requirements.txt) containing all of the pip-installed modules used in my virtualenv.  To install all of these packages, use:
+There's also a [pip_requirements.txt](https://github.com/ooi-integration/uframe-webservices/blob/master/pip_requirements.txt) containing the required packages.  To install these packages, use:
 
     > pip install -r pip_requirements.txt
     
