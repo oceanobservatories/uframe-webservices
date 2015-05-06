@@ -67,5 +67,5 @@ if __name__ == '__main__':
             print '{:s}'.format(url['url'])
     else:      
         for url in urls:
-            print '{:d},{:s},{:s}'.format(url['code'], url['reason'], url['url'])
+            print '{:s},{:d},{:s},{:s}'.format(url['request_time'],url['code'], url['reason'], url['url'])
     

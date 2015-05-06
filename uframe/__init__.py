@@ -5,6 +5,7 @@ Module for querying uFrame instances and downloading responses, primarily as Net
 import requests
 import sys
 import os
+import datetime
 from dateutil import parser
 from dateutil.relativedelta import relativedelta as tdelta
 
@@ -274,12 +275,15 @@ def get_uframe_array_nc(array_id, nc_dest=None, exec_dpa=True, urlonly=False, de
                     sensor,
                     ts0,
                     ts1)
-                
+               
+                # timestamp of request
+                ts = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S')
                 # If urlonly is True, do not attempt to fetch.  Just append the
                 # url for this stream
                 fetched_urls.append({'url' : nc_url,
                     'reason' : None,
-                    'code' : -1})
+                    'code' : -1,
+                    'request_time' : ts})
              
                 if urlonly:
                     continue
