@@ -262,6 +262,11 @@ def get_uframe_array(array_id, out_dir=None, exec_dpa=True, urlonly=False, delta
 
             for metadata in meta['times']:
                 dt1 = parser.parse(metadata['endTime'])
+                if dt1.year < 2000:
+                    sys.stderr.write('{:s}: Invalid metadata endTime: {:s}\n'.format(p_name, metadata['endTime']))
+                    sys.stderr.flush()
+                    continue
+
                 dt0 = dt1 - tdelta(**dict({deltatype : deltaval}))
                 ts1 = metadata['endTime']
                 ts0 = dt0.strftime('%Y-%m-%dT%H:%M:%S.%fZ')
