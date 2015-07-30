@@ -350,7 +350,8 @@ def fetch_uframe_time_bound_stream(uframe_base, subsite, node, sensor, method, s
                 if r.status_code == HTTP_STATUS_OK:
                     # Write the file if the request succeeded
                     
-                    # 2015-07-30: kerfoot@marine.rutgers.edu - special case:
+                    # 2015-07-30: kerfoot@marine.rutgers.edu
+                    # Special zip-file case:
                     # if the r.headers['content-type'] == 'application/octet-stream',
                     # override the file_format and download as zip file.  If 
                     # r.headers['content-type'] is anything else, download as the
