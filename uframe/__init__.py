@@ -352,14 +352,15 @@ def fetch_uframe_time_bound_stream(uframe_base, subsite, node, sensor, method, s
                     
                     # 2015-07-30: kerfoot@marine.rutgers.edu
                     # Special zip-file case:
-                    # if the r.headers['content-type'] == 'application/octet-stream',
+                    # if the r.headers['content-type'] == 'application/octet-stream'
+                    # and r.headers['content-disposition'] ends with .zip", 
                     # override the file_format and download as zip file.  If 
                     # r.headers['content-type'] is anything else, download as the
-                    # user specified.
+                    # user specified format.
                     # This is a TEMPORARY patch to handle uframe returning zips
                     # of 1 or more .nc files.
                     
-                    if r.headers['content-type'] == 'application/octet-stream':
+                    if r.headers['content-type'] == 'application/octet-stream' and r.headers['content-disposition'].endswith('.zip"'):
                         file_format = 'zip'
                         
                     file_name = '{:s}-{:s}-{:s}-{:s}-{:s}-{:s}.{:s}'.format(
