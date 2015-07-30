@@ -20,7 +20,7 @@ _valid_relativedeltatypes = ('years',
     'minutes',
     'seconds')
 
-__filename_extension = { 'netcdf':'nc', 'json':'json' }
+__filename_extension = { 'netcdf':'nc', 'json':'json', 'zip':'zip' }
 
 
 class UFrame(object):
@@ -311,15 +311,15 @@ def fetch_uframe_time_bound_stream(uframe_base, subsite, node, sensor, method, s
         'request_time' : datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S')
     }
 
-    file_name = '{:s}-{:s}-{:s}-{:s}-{:s}-{:s}.{:s}'.format(
-        subsite,
-        node,
-        stream,
-        method,
-        parser.parse(begin_datetime).strftime('%Y%m%dT%H%M%S'),
-        parser.parse(end_datetime).strftime('%Y%m%dT%H%M%S'),
-        __filename_extension[file_format]
-    )
+    #file_name = '{:s}-{:s}-{:s}-{:s}-{:s}-{:s}.{:s}'.format(
+    #    subsite,
+    #    node,
+    #    stream,
+    #    method,
+    #    parser.parse(begin_datetime).strftime('%Y%m%dT%H%M%S'),
+    #    parser.parse(end_datetime).strftime('%Y%m%dT%H%M%S'),
+    #    __filename_extension[file_format]
+    #)
 
     # If urlonly is True, do not attempt to fetch.
     if not urlonly:
@@ -344,6 +344,27 @@ def fetch_uframe_time_bound_stream(uframe_base, subsite, node, sensor, method, s
                 fetched_url['code'] = r.status_code
                 if r.status_code == HTTP_STATUS_OK:
                     # Write the file if the request succeeded
+                    
+                    # 2015-07-30: kerfoot@marine.rutgers.edu - special case:
+                    # if the r.headers['content-type'] == 'application/octet-stream',
+                    # override the file_format and download as zip file.  If 
+                    # r.headers['content-type'] is anything else, download as the
+                    # user specified.
+                    # This is a TEMPORARY patch to handle uframe returning zips
+                    # of 1 or more .nc files.
+                    
+                    if r.headers['content-type'] == 'application/octet-stream':
+                        file_format = 'zip'
+                        
+                    file_name = '{:s}-{:s}-{:s}-{:s}-{:s}-{:s}.{:s}'.format(
+                        subsite,
+                        node,
+                        stream,
+                        method,
+                        parser.parse(begin_datetime).strftime('%Y%m%dT%H%M%S'),
+                        parser.parse(end_datetime).strftime('%Y%m%dT%H%M%S'),
+                        __filename_extension[file_format]
+                    )
                     file_path = os.path.join(dest_dir, file_name)
                     sys.stdout.write('Writing file: {:s}\n'.format(file_path))
                     sys.stdout.flush()
