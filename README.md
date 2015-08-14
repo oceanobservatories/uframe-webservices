@@ -21,9 +21,10 @@ There's also a [pip_requirements.txt](https://github.com/ooi-integration/uframe-
     > pip install -r pip_requirements.txt
     
 ###Scripts
-There are 2 main scripts:
+There are 3 main scripts:
 - [get_arrays.py](https://github.com/ooi-integration/uframe-webservices/blob/master/get_arrays.py): Retrieves the list of platforms for which uFrame has ingested some portion of the datasets.
 - [download_uframe_platform_nc.py](https://github.com/ooi-integration/uframe-webservices/blob/master/download_uframe_platform_nc.py): Create (and optionally send) the requests for all data streams under the specified platform.
+- [map_uframe_datastreams.py](https://github.com/ooi-integration/uframe-webservices/blob/master/map_uframe_datastreams.py): Retrieves metadata records for all available streams/parameters contained in the default UFrame instance.  Results are printed to STDOUT in csv format.
 
 The default uFrame instance is <b>http://uframe-test.ooi.rutgers.edu</b>.  This can be changed using the <b>base_url</b> option from either of the scripts above.
 
@@ -44,11 +45,18 @@ Then, to display the list of all valid data queries for a specified platform:
 Or, to download the last 1 day's worth of data, as NetCDF files, to /tmp/data:
 
     > download_uframe_platform_nc.py --dest /tmp/data CP02PMUI
+    
+Retrieving all available streams/parameters in csv format is accomplished by running:
+
+    > map_uframe_datastreams.py > ./uframe-test_streams.csv
 
 More doco avaialable via:
 
     > get_arrays.py -h
-and:
+or:
 
     > download_uframe_platform_nc.py -h
+or:
+
+    > map_uframe_datastreams.py -h
 
