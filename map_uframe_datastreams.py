@@ -1,13 +1,14 @@
 #!/usr/bin/env python
 
 from uframe import *
+from uframe.availability import get_parameter_stream
 import sys
 import csv
 import json
 import argparse
 
-sys.path.append('/Users/kerfoot/code/ooi')
-from testing.availability import get_parameter_stream
+#sys.path.append('/Users/kerfoot/code/ooi')
+#from testing.availability import get_parameter_stream
 
 def main(args):
     """
