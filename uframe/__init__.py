@@ -164,7 +164,7 @@ def get_sensor_metadata(array_id, platform, sensor, uframe_base=UFrame()):
     return r.json()
 
 
-def get_uframe_array(array_id, out_dir=None, exec_dpa=True, urlonly=False, deltatype='days', deltaval=1, uframe_base=UFrame(), file_format='netcdf'):
+def get_uframe_array(array_id, out_dir=None, exec_dpa=True, urlonly=False, deltatype='days', deltaval=1, provenance=False, limit=True, uframe_base=UFrame(), file_format='netcdf'):
     """
     Download NetCDF / JSON files for the most recent 1-day worth of data for telemetered
     and recovered data streams for the specified array_id.
@@ -230,6 +230,11 @@ def get_uframe_array(array_id, out_dir=None, exec_dpa=True, urlonly=False, delta
         sys.stderr.write('{:s}: No platforms found for specified array\n'.format(array))
         sys.stderr.flush()
         return
+    
+    if limit == True:
+        limit = 10000 # limit to 10000 points
+    else:
+        limit = -1 # no limit
 
     for platform in platforms:
 
@@ -286,7 +291,9 @@ def get_uframe_array(array_id, out_dir=None, exec_dpa=True, urlonly=False, delta
                     file_format = file_format,
                     exec_dpa = exec_dpa,
                     urlonly = urlonly,
-                    dest_dir = dest_dir
+                    dest_dir = dest_dir,
+                    provenance = provenance,
+                    limit = str(limit)
                 )
                 fetched_urls.append(fetched_url)
 
@@ -294,9 +301,9 @@ def get_uframe_array(array_id, out_dir=None, exec_dpa=True, urlonly=False, delta
 
 
 def fetch_uframe_time_bound_stream(uframe_base, subsite, node, sensor, method, stream, begin_datetime, end_datetime,
-                                     file_format, exec_dpa, urlonly, dest_dir):
-
-    url = '{:s}/{:s}/{:s}/{:s}/{:s}/{:s}?beginDT={:s}&endDT={:s}&format=application/{:s}&execDPA={:s}'.format(
+                                     file_format, exec_dpa, urlonly, dest_dir, provenance, limit):
+       
+    url = '{:s}/{:s}/{:s}/{:s}/{:s}/{:s}?beginDT={:s}&endDT={:s}&format=application/{:s}&execDPA={:s}&limit={:s}&include_provenance={:s}'.format(
         uframe_base.url,
         subsite,
         node,
@@ -306,7 +313,9 @@ def fetch_uframe_time_bound_stream(uframe_base, subsite, node, sensor, method, s
         begin_datetime,
         end_datetime,
         file_format,
-        str(exec_dpa).lower()
+        str(exec_dpa).lower(),
+        limit,
+        str(provenance).lower()
     )
 
     fetched_url = {
