@@ -62,6 +62,14 @@ if __name__ == '__main__':
             type=int,
             default=1,
             help='Positive integer value to subtract from the end time to get the start time for subsetting.')
+    arg_parser.add_argument('--provenance',
+            action='store_true',
+            dest='provenance',
+            help='Request provenance values (Default is on)')
+    arg_parser.add_argument('--datalimit',
+            action='store_false',
+            dest='limit',
+            help='Turn data limit of 10,000 (default) off')
 
     parsed_args = arg_parser.parse_args()
 
