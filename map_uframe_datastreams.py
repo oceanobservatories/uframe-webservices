@@ -25,7 +25,7 @@ def main(args):
     stream_map = map_uframe_datastreams(args.array_id, uframe=uframe)
     
     if args.file_format == 'json':
-        json.dumps(stream_map)
+        sys.stdout.write(json.dumps(stream_map))
     else:   
         stream_map_to_csv(stream_map)
         
