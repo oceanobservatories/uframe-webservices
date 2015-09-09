@@ -66,7 +66,7 @@ if __name__ == '__main__':
             action='store_true',
             dest='provenance',
             help='Request provenance values (Default is on)')
-    arg_parser.add_argument('--datalimit',
+    arg_parser.add_argument('--nolimit',
             action='store_false',
             dest='limit',
             help='Turn data limit of 10,000 (default) off')
