@@ -399,3 +399,6 @@ def fetch_uframe_time_bound_stream(uframe_base, subsite, node, sensor, method, s
                 fetched_url['code'] = 500
 
     return fetched_url
+    
+def get_metadata_by_ref_des():
+    return
