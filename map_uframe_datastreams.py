@@ -49,10 +49,10 @@ def main(args):
             
         if args.all:
             
-            cols = ['parameter',
-                'method',
+            cols = ['reference_designator',
                 'stream',
-                'reference_designator',
+                'parameter',
+                'method',
                 'pdId',
                 'units',
                 'beginTime',
