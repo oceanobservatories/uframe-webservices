@@ -63,11 +63,11 @@ def main(args):
                 'unsigned',
                 'metadata_url']
         else:
-            cols = ['parameter',
-                'method',
+            cols = ['reference_designator',
                 'stream',
-                'calculated',
-                'reference_designator']
+                'parameter',
+                'method',
+                'calculated']
                 
             if args.particles:
                 cols.append('num_records')
