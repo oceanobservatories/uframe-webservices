@@ -22,9 +22,9 @@ def main(args):
         uframe = UFrame(base_url=args.base_url)
         
     if args.ref_des:
-        stream_map = map_parameters_by_reference_designator(args.ref_des, uframe=uframe)
+        stream_map = map_parameters_by_reference_designator(args.ref_des, method=args.method, uframe=uframe)
     else:
-        stream_map = map_uframe_datastreams(args.array_id, uframe=uframe)
+        stream_map = map_uframe_datastreams(args.array_id, method=args.method, uframe=uframe)
     
     if args.file_format == 'json':
         sys.stdout.write(json.dumps(stream_map))
@@ -169,7 +169,7 @@ def map_uframe_datastreams(array_id=None, method=None, uframe=UFrame()):
                     platform,
                     sensor)
                 
-                streams = map_streams(meta, url)
+                streams = map_streams(meta, url, method=method)
                 
                 for stream in streams:
                     stream_map.append(stream)
@@ -197,19 +197,13 @@ def map_streams(meta, url, method=None):
     '''
     
     stream_map = []
-    
-    seen_parameters = []    
+       
     for parameter in meta['parameters']:
-        
-        if parameter['particleKey'] in seen_parameters:
-            continue
-            
-        seen_parameters.append(parameter['particleKey'])
         
         streams = []
         for t in range(len(meta['times'])):
             if method:
-                if meta['times'][t]['stream'] == parameter['stream'] and meta['times'][t]['method'] == method:
+                if meta['times'][t]['stream'] == parameter['stream'] and meta['times'][t]['method'].startswith(method):
                     streams.append(meta['times'][t])
             else:
                 if meta['times'][t]['stream'] == parameter['stream']:
@@ -223,7 +217,7 @@ def map_streams(meta, url, method=None):
             
     return stream_map
     
-def map_parameters_by_reference_designator(ref_des, uframe=UFrame()):
+def map_parameters_by_reference_designator(ref_des, method=None, uframe=UFrame()):
     '''
     Return a stream map containing metadata for all streams and parameters 
     for the specified reference designator.
@@ -262,7 +256,7 @@ def map_parameters_by_reference_designator(ref_des, uframe=UFrame()):
         r_tokens[0],
         r_tokens[1],
         '-'.join([r_tokens[2], r_tokens[3]]))    
-    stream_map = map_streams(metadata, url)
+    stream_map = map_streams(metadata, url, method=method)
     
     return stream_map
     
@@ -316,6 +310,10 @@ if __name__ == '__main__':
     arg_parser.add_argument('-s', '--subsite',
         dest='subsite',
         help='Restrict results to the specified subsite (i.e.: GI01SUMO).')
+    arg_parser.add_argument('-m', '--method',
+        dest='method',
+        default=None,
+        help='Specify a stream method (i.e.: telemetered, recovered_host, etc.)')
     arg_parser.add_argument('-p', '--particles',
         dest='particles',
         action='store_true',
