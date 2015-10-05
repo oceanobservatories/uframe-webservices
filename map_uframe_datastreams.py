@@ -236,7 +236,7 @@ def map_parameters_by_reference_designator(ref_des, method=None, uframe=UFrame()
     # Split the reference designtor on dashes
     r_tokens = ref_des.split('-')
     if len(r_tokens) != 4:
-        sys.stderr.write('Invalid reference designator: {:s}\n'.format(ref_dest))
+        sys.stderr.write('Invalid reference designator: {:s}\n'.format(ref_des))
         sys.stderr.flush()
         return False
  
