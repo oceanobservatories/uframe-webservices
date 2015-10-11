@@ -4,7 +4,7 @@ Set of python scripts for:
 - Creating and executing uFrame data requests
 - Downloading uFrame ingested data sets as NetCDF files
 
-High-level discussion follows below.  Check [here](https://github.com/ooi-integration/uframe-webservices/wiki) for a detailed discussion of the [UFrame Web Service API](https://github.com/ooi-integration/uframe-webservices/wiki/UFrame-Web-Services-API).
+High-level discussion follows below.  Check [here](https://github.com/ooi-integration/uframe-webservices/wiki) for a list of detailed/technical discussions, including the [UFrame Web Service API](https://github.com/ooi-integration/uframe-webservices/wiki/UFrame-Web-Services-API).
 
 ##Contents
 - [Introduction](#introduction)
