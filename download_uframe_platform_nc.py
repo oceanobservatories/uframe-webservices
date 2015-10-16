@@ -65,7 +65,7 @@ if __name__ == '__main__':
     arg_parser.add_argument('--provenance',
             action='store_true',
             dest='provenance',
-            help='Request provenance values (Default is on)')
+            help='Request provenance values (Default is off)')
     arg_parser.add_argument('--nolimit',
             action='store_false',
             dest='limit',
