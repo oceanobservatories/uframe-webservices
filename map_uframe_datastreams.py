@@ -96,8 +96,11 @@ def main(args):
                         row.append(stream[column_map[col]])
                 else:
                     row.append(stream[tokens[0]][tokens[1]])
-                
-            stdout_writer.writerow(row)
+            try:    
+                stdout_writer.writerow(row)
+            except ValueError as e:
+                sys.stderr.write('{:s}\n'.format(e.message))
+                continue
         
     return len(stream_map)
     
