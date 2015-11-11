@@ -30,7 +30,7 @@ def main(args):
             for subsite in subsites:
                 instruments = get_platform_sensors(array, subsite, uframe_base=uframe_base)
                 for instrument in instruments:
-                    results.append('{:s}-{:s}-{:s}\n'.format(array, subsite, instrument))
+                    results.append('{:s}-{:s}-{:s}'.format(array, subsite, instrument))
     else:
         results = arrays
         
