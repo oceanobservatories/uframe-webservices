@@ -395,5 +395,30 @@ def fetch_uframe_time_bound_stream(uframe_base, subsite, node, sensor, method, s
 
     return fetched_url
     
-def get_metadata_by_ref_des():
-    return
+def get_ref_des_streams(ref_des, uframe_base=UFrame()):
+    
+    tokens = ref_des.split('-')
+    if len(tokens) != 4:
+        sys.stderr.write('Invalid reference designator: {:s}\n'.format(ref_des))
+        return []
+        
+    metadata_url = '{:s}/{:s}/{:s}/{:s}-{:s}/metadata'.format(uframe_base.url, tokens[0], tokens[1], tokens[2], tokens[3])
+    
+    # Fetch the metadata 
+    r = requests.get(metadata_url)
+    if r.status_code != 200:
+        sys.stderr.write('Failed to fetch metadata response: {:s}\n'.format(metadata_url))
+        return []
+        
+    streams = []
+    try:
+        metadata = r.json()
+    except ValueError as e:
+        sys.stderr.write('{:s}\n'.format(e.message))
+        return streams
+        
+    for stream in metadata['times']:
+        streams.append([ref_des, stream['stream']])
+        
+    return streams
+    
