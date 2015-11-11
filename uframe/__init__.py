@@ -164,7 +164,7 @@ def get_sensor_metadata(array_id, platform, sensor, uframe_base=UFrame()):
     return r.json()
 
 
-def get_uframe_array(array_id, out_dir=None, exec_dpa=True, urlonly=False, deltatype='days', deltaval=1, provenance=False, limit=True, uframe_base=UFrame(), file_format='netcdf'):
+def get_uframe_array(array_id, out_dir=None, exec_dpa=True, urlonly=False, alltimes=False, deltatype='days', deltaval=1, provenance=False, limit=True, uframe_base=UFrame(), file_format='netcdf'):
     """
     Download NetCDF / JSON files for the most recent 1-day worth of data for telemetered
     and recovered data streams for the specified array_id.
@@ -266,15 +266,20 @@ def get_uframe_array(array_id, out_dir=None, exec_dpa=True, urlonly=False, delta
                 continue
 
             for metadata in meta['times']:
-                dt1 = parser.parse(metadata['endTime'])
-                if dt1.year < 2000:
-                    sys.stderr.write('{:s}: Invalid metadata endTime: {:s}\n'.format(p_name, metadata['endTime']))
-                    sys.stderr.flush()
-                    continue
-
-                dt0 = dt1 - tdelta(**dict({deltatype : deltaval}))
-                ts1 = metadata['endTime']
-                ts0 = dt0.strftime('%Y-%m-%dT%H:%M:%S.%fZ')
+                if alltimes:
+                    ts0 = metadata['beginTime']
+                    ts1 = metadata['endTime']
+                else:
+                    dt1 = parser.parse(metadata['endTime'])
+                    if dt1.year < 2000:
+                        sys.stderr.write('{:s}: Invalid metadata endTime: {:s}\n'.format(p_name, metadata['endTime']))
+                        sys.stderr.flush()
+                        continue
+    
+                    dt0 = dt1 - tdelta(**dict({deltatype : deltaval}))
+                    ts1 = metadata['endTime']
+                    ts0 = '{:s}Z'.format(dt0.strftime('%Y-%m-%dT%H:%M:%S.%f')[:-3])
+                
                 stream = metadata['stream']
                 method = metadata['method']
                 dest_dir = os.path.join(out_dir, p_name, method) if not urlonly else None
@@ -324,16 +329,6 @@ def fetch_uframe_time_bound_stream(uframe_base, subsite, node, sensor, method, s
         'code' : -1,
         'request_time' : datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S')
     }
-
-    #file_name = '{:s}-{:s}-{:s}-{:s}-{:s}-{:s}.{:s}'.format(
-    #    subsite,
-    #    node,
-    #    stream,
-    #    method,
-    #    parser.parse(begin_datetime).strftime('%Y%m%dT%H%M%S'),
-    #    parser.parse(end_datetime).strftime('%Y%m%dT%H%M%S'),
-    #    __filename_extension[file_format]
-    #)
 
     # If urlonly is True, do not attempt to fetch.
     if not urlonly:
