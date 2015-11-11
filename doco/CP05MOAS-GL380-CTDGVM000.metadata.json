@@ -1,0 +1,306 @@
+{
+  "parameters" : [ {
+    "shape" : "SCALAR",
+    "unsigned" : false,
+    "type" : "DOUBLE",
+    "stream" : "ctdgv_m_glider_instrument_recovered",
+    "units" : "seconds since 1900-01-01",
+    "fillValue" : "-9999999",
+    "pdId" : "PD7",
+    "particleKey" : "time"
+  }, {
+    "shape" : "SCALAR",
+    "unsigned" : false,
+    "type" : "DOUBLE",
+    "stream" : "ctdgv_m_glider_instrument_recovered",
+    "units" : "seconds since 1900-01-01",
+    "fillValue" : "-9999999",
+    "pdId" : "PD10",
+    "particleKey" : "port_timestamp"
+  }, {
+    "shape" : "SCALAR",
+    "unsigned" : false,
+    "type" : "DOUBLE",
+    "stream" : "ctdgv_m_glider_instrument_recovered",
+    "units" : "seconds since 1900-01-01",
+    "fillValue" : "-9999999",
+    "pdId" : "PD11",
+    "particleKey" : "driver_timestamp"
+  }, {
+    "shape" : "SCALAR",
+    "unsigned" : false,
+    "type" : "DOUBLE",
+    "stream" : "ctdgv_m_glider_instrument_recovered",
+    "units" : "seconds since 1900-01-01",
+    "fillValue" : "-9999999",
+    "pdId" : "PD12",
+    "particleKey" : "internal_timestamp"
+  }, {
+    "shape" : "SCALAR",
+    "unsigned" : false,
+    "type" : "STRING",
+    "stream" : "ctdgv_m_glider_instrument_recovered",
+    "units" : "1",
+    "fillValue" : "empty",
+    "pdId" : "PD16",
+    "particleKey" : "preferred_timestamp"
+  }, {
+    "shape" : "SCALAR",
+    "unsigned" : false,
+    "type" : "DOUBLE",
+    "stream" : "ctdgv_m_glider_instrument_recovered",
+    "units" : "seconds since 1900-01-01",
+    "fillValue" : "-9999",
+    "pdId" : "PD863",
+    "particleKey" : "ingestion_timestamp"
+  }, {
+    "shape" : "SCALAR",
+    "unsigned" : false,
+    "type" : "FLOAT",
+    "stream" : "ctdgv_m_glider_instrument_recovered",
+    "units" : "s",
+    "fillValue" : "-9999999",
+    "pdId" : "PD1401",
+    "particleKey" : "m_present_secs_into_mission"
+  }, {
+    "shape" : "SCALAR",
+    "unsigned" : false,
+    "type" : "DOUBLE",
+    "stream" : "ctdgv_m_glider_instrument_recovered",
+    "units" : "seconds since 1970-01-01",
+    "fillValue" : "-9999999",
+    "pdId" : "PD1402",
+    "particleKey" : "m_present_time"
+  }, {
+    "shape" : "SCALAR",
+    "unsigned" : false,
+    "type" : "DOUBLE",
+    "stream" : "ctdgv_m_glider_instrument_recovered",
+    "units" : "seconds since 1970-01-01",
+    "fillValue" : "-9999999",
+    "pdId" : "PD1476",
+    "particleKey" : "sci_ctd41cp_timestamp"
+  }, {
+    "shape" : "SCALAR",
+    "unsigned" : false,
+    "type" : "FLOAT",
+    "stream" : "ctdgv_m_glider_instrument_recovered",
+    "units" : "s",
+    "fillValue" : "-9999999",
+    "pdId" : "PD1494",
+    "particleKey" : "sci_m_present_secs_into_mission"
+  }, {
+    "shape" : "SCALAR",
+    "unsigned" : false,
+    "type" : "DOUBLE",
+    "stream" : "ctdgv_m_glider_instrument_recovered",
+    "units" : "seconds since 1970-01-01",
+    "fillValue" : "-9999999",
+    "pdId" : "PD1495",
+    "particleKey" : "sci_m_present_time"
+  }, {
+    "shape" : "SCALAR",
+    "unsigned" : false,
+    "type" : "FLOAT",
+    "stream" : "ctdgv_m_glider_instrument_recovered",
+    "units" : "S m-1",
+    "fillValue" : "-9999999",
+    "pdId" : "PD1526",
+    "particleKey" : "sci_water_cond"
+  }, {
+    "shape" : "SCALAR",
+    "unsigned" : false,
+    "type" : "FLOAT",
+    "stream" : "ctdgv_m_glider_instrument_recovered",
+    "units" : "bar",
+    "fillValue" : "-9999999",
+    "pdId" : "PD1527",
+    "particleKey" : "sci_water_pressure"
+  }, {
+    "shape" : "SCALAR",
+    "unsigned" : false,
+    "type" : "FLOAT",
+    "stream" : "ctdgv_m_glider_instrument_recovered",
+    "units" : "deg_C",
+    "fillValue" : "-9999999",
+    "pdId" : "PD1528",
+    "particleKey" : "sci_water_temp"
+  }, {
+    "shape" : "FUNCTION",
+    "unsigned" : false,
+    "type" : "FLOAT",
+    "stream" : "ctdgv_m_glider_instrument_recovered",
+    "units" : "1",
+    "fillValue" : "-9999999",
+    "pdId" : "PD1560",
+    "particleKey" : "sci_water_pracsal"
+  }, {
+    "shape" : "FUNCTION",
+    "unsigned" : false,
+    "type" : "FLOAT",
+    "stream" : "ctdgv_m_glider_instrument_recovered",
+    "units" : "kg m-3",
+    "fillValue" : "-9999999",
+    "pdId" : "PD2749",
+    "particleKey" : "sci_seawater_density"
+  }, {
+    "shape" : "SCALAR",
+    "unsigned" : false,
+    "type" : "DOUBLE",
+    "stream" : "ctdgv_m_glider_instrument",
+    "units" : "seconds since 1900-01-01",
+    "fillValue" : "-9999999",
+    "pdId" : "PD7",
+    "particleKey" : "time"
+  }, {
+    "shape" : "SCALAR",
+    "unsigned" : false,
+    "type" : "DOUBLE",
+    "stream" : "ctdgv_m_glider_instrument",
+    "units" : "seconds since 1900-01-01",
+    "fillValue" : "-9999999",
+    "pdId" : "PD10",
+    "particleKey" : "port_timestamp"
+  }, {
+    "shape" : "SCALAR",
+    "unsigned" : false,
+    "type" : "DOUBLE",
+    "stream" : "ctdgv_m_glider_instrument",
+    "units" : "seconds since 1900-01-01",
+    "fillValue" : "-9999999",
+    "pdId" : "PD11",
+    "particleKey" : "driver_timestamp"
+  }, {
+    "shape" : "SCALAR",
+    "unsigned" : false,
+    "type" : "DOUBLE",
+    "stream" : "ctdgv_m_glider_instrument",
+    "units" : "seconds since 1900-01-01",
+    "fillValue" : "-9999999",
+    "pdId" : "PD12",
+    "particleKey" : "internal_timestamp"
+  }, {
+    "shape" : "SCALAR",
+    "unsigned" : false,
+    "type" : "STRING",
+    "stream" : "ctdgv_m_glider_instrument",
+    "units" : "1",
+    "fillValue" : "empty",
+    "pdId" : "PD16",
+    "particleKey" : "preferred_timestamp"
+  }, {
+    "shape" : "SCALAR",
+    "unsigned" : false,
+    "type" : "DOUBLE",
+    "stream" : "ctdgv_m_glider_instrument",
+    "units" : "seconds since 1900-01-01",
+    "fillValue" : "-9999",
+    "pdId" : "PD863",
+    "particleKey" : "ingestion_timestamp"
+  }, {
+    "shape" : "SCALAR",
+    "unsigned" : false,
+    "type" : "FLOAT",
+    "stream" : "ctdgv_m_glider_instrument",
+    "units" : "s",
+    "fillValue" : "-9999999",
+    "pdId" : "PD1401",
+    "particleKey" : "m_present_secs_into_mission"
+  }, {
+    "shape" : "SCALAR",
+    "unsigned" : false,
+    "type" : "DOUBLE",
+    "stream" : "ctdgv_m_glider_instrument",
+    "units" : "seconds since 1970-01-01",
+    "fillValue" : "-9999999",
+    "pdId" : "PD1402",
+    "particleKey" : "m_present_time"
+  }, {
+    "shape" : "SCALAR",
+    "unsigned" : false,
+    "type" : "DOUBLE",
+    "stream" : "ctdgv_m_glider_instrument",
+    "units" : "seconds since 1970-01-01",
+    "fillValue" : "-9999999",
+    "pdId" : "PD1476",
+    "particleKey" : "sci_ctd41cp_timestamp"
+  }, {
+    "shape" : "SCALAR",
+    "unsigned" : false,
+    "type" : "FLOAT",
+    "stream" : "ctdgv_m_glider_instrument",
+    "units" : "s",
+    "fillValue" : "-9999999",
+    "pdId" : "PD1494",
+    "particleKey" : "sci_m_present_secs_into_mission"
+  }, {
+    "shape" : "SCALAR",
+    "unsigned" : false,
+    "type" : "DOUBLE",
+    "stream" : "ctdgv_m_glider_instrument",
+    "units" : "seconds since 1970-01-01",
+    "fillValue" : "-9999999",
+    "pdId" : "PD1495",
+    "particleKey" : "sci_m_present_time"
+  }, {
+    "shape" : "SCALAR",
+    "unsigned" : false,
+    "type" : "FLOAT",
+    "stream" : "ctdgv_m_glider_instrument",
+    "units" : "S m-1",
+    "fillValue" : "-9999999",
+    "pdId" : "PD1526",
+    "particleKey" : "sci_water_cond"
+  }, {
+    "shape" : "SCALAR",
+    "unsigned" : false,
+    "type" : "FLOAT",
+    "stream" : "ctdgv_m_glider_instrument",
+    "units" : "bar",
+    "fillValue" : "-9999999",
+    "pdId" : "PD1527",
+    "particleKey" : "sci_water_pressure"
+  }, {
+    "shape" : "SCALAR",
+    "unsigned" : false,
+    "type" : "FLOAT",
+    "stream" : "ctdgv_m_glider_instrument",
+    "units" : "deg_C",
+    "fillValue" : "-9999999",
+    "pdId" : "PD1528",
+    "particleKey" : "sci_water_temp"
+  }, {
+    "shape" : "FUNCTION",
+    "unsigned" : false,
+    "type" : "FLOAT",
+    "stream" : "ctdgv_m_glider_instrument",
+    "units" : "1",
+    "fillValue" : "-9999999",
+    "pdId" : "PD1560",
+    "particleKey" : "sci_water_pracsal"
+  }, {
+    "shape" : "FUNCTION",
+    "unsigned" : false,
+    "type" : "FLOAT",
+    "stream" : "ctdgv_m_glider_instrument",
+    "units" : "kg m-3",
+    "fillValue" : "-9999999",
+    "pdId" : "PD2749",
+    "particleKey" : "sci_seawater_density"
+  } ],
+  "times" : [ {
+    "endTime" : "2015-01-04T18:35:36.420Z",
+    "method" : "recovered_host",
+    "count" : 3566545,
+    "stream" : "ctdgv_m_glider_instrument_recovered",
+    "sensor" : "CP05MOAS-GL380-03-CTDGVM000",
+    "beginTime" : "2014-10-06T23:58:44.162Z"
+  }, {
+    "endTime" : "2015-01-04T11:55:02.768Z",
+    "method" : "telemetered",
+    "count" : 119176,
+    "stream" : "ctdgv_m_glider_instrument",
+    "sensor" : "CP05MOAS-GL380-03-CTDGVM000",
+    "beginTime" : "2014-10-06T23:58:44.162Z"
+  } ]
+}

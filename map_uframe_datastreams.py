@@ -24,7 +24,7 @@ def main(args):
     if args.ref_des:
         stream_map = map_parameters_by_reference_designator(args.ref_des, method=args.method, uframe=uframe)
     else:
-        stream_map = map_uframe_datastreams(args.array_id, method=args.method, uframe=uframe)
+        stream_map = map_uframe_datastreams(args.array_id, subsite=args.subsite, method=args.method, uframe=uframe)
     
     if args.file_format == 'json':
         sys.stdout.write(json.dumps(stream_map))
@@ -104,7 +104,7 @@ def main(args):
         
     return len(stream_map)
     
-def map_uframe_datastreams(array_id=None, method=None, uframe=UFrame()):
+def map_uframe_datastreams(array_id=None, subsite=None, method=None, uframe=UFrame()):
     """
     Download metadata records for all available parameters and associated streams 
     (telemetered/recovered) from the default UFrame instance as CSV (default) or 
@@ -143,6 +143,9 @@ def map_uframe_datastreams(array_id=None, method=None, uframe=UFrame()):
             
         for platform in platforms:
             
+            if subsite and subsite != platform:
+                continue
+                
             #sys.stdout.write('Fetching Platform: {:s}\n'.format(platform))
             
             # Get the list of sensors for this platform
