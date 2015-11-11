@@ -54,6 +54,10 @@ if __name__ == '__main__':
     arg_parser.add_argument('-d', '--dest',
             dest='out_dir',
             help='Output files destination')
+    arg_parser.add_argument('-a', '--alltimes',
+            dest='alltimes',
+            action='store_true',
+            help='Request the entire time range for the specified stream.  Ignores --deltatype and --deltavalue options.')
     arg_parser.add_argument('--deltatype',
             default='days',
             help='Type for calculating the subset start time, i.e.: years, months, weeks, days.  Must be a type kwarg accepted by dateutil.relativedelta.')
@@ -65,11 +69,11 @@ if __name__ == '__main__':
     arg_parser.add_argument('--provenance',
             action='store_true',
             dest='provenance',
-            help='Request provenance values (Default is on)')
+            help='Include provenance metadata.')
     arg_parser.add_argument('--nolimit',
             action='store_false',
             dest='limit',
-            help='Turn data limit of 10,000 (default) off')
+            help='Turn data decimation off.')
 
     parsed_args = arg_parser.parse_args()
 
