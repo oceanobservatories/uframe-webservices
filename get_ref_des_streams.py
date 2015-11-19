@@ -23,7 +23,7 @@ def main(args):
     streams = get_ref_des_streams(args.ref_des, uframe_base=uframe_base)
 
     if not streams:
-        sys.stderr.write('No arrays found for uFrame instance: {:s}'.format(uframe_base.url))
+        sys.stderr.write('No arrays found for uFrame instance: {:s}\n'.format(uframe_base.url))
         return
     
     if args.file_format == 'json':
