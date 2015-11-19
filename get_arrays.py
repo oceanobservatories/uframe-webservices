@@ -2,6 +2,7 @@
 
 import argparse
 import sys
+import os
 from uframe import UFrame, get_arrays, get_platforms, get_platform_sensors
 
 
@@ -15,7 +16,11 @@ def main(args):
     if args.base_url:
         uframe_base = UFrame(base_url=args.base_url)
     else:
-        uframe_base = UFrame()
+        uframe_env_url = os.getenv('UFRAME_BASE_URL')
+        if uframe_env_url:
+            uframe_base = UFrame(base_url=uframe_env_url)
+        else:
+            uframe_base = UFrame()
 
     arrays = get_arrays(uframe_base=uframe_base)
 
